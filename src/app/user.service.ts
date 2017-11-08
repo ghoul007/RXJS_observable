@@ -20,7 +20,7 @@ export class UserService {
       .then(res => res.json());
   }
 
-  getUsersRace() {
+  getUsersPromiseRace() {
     this.delayedPromise = new Promise((resolve, reject) =>
       setTimeout(() => resolve("value1"), 1000)
     );
@@ -29,5 +29,18 @@ export class UserService {
     );
 
     return Promise.race([this.delayedPromise, this.delayedPromise2]);
+  }
+
+  getFromPromise() {
+    this.delayedPromise = new Promise((resolve, reject) =>
+      setTimeout(() => resolve("fromPromise"), 1000)
+    );
+    return Observable.fromPromise(this.delayedPromise);
+  }
+
+  getUserFromPromise() {
+    return Observable.fromPromise(
+      this.http.get("https://jsonplaceholder.typicode.com/users").toPromise()
+    ).map(res => res.json());
   }
 }
