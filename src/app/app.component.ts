@@ -1,5 +1,7 @@
+import * as events from 'events';
+import { Subject } from 'rxjs/Rx';
 import { UserService } from "./user.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: "app-root",
@@ -9,6 +11,10 @@ import { Component, OnInit } from "@angular/core";
 export class AppComponent implements OnInit {
   title = "app";
   users: any = [];
+  eventEmit : Subject<events> =  new Subject();
+
+
+
   constructor(private _serviceUser: UserService) {}
   ngOnInit() {
     this._serviceUser.getUsers().then(res => {
@@ -38,5 +44,18 @@ export class AppComponent implements OnInit {
     .subscribe(res => {
       console.log("==>",res);
     });
+    /**
+     * From Observable
+     */
+    this._serviceUser.getUserObservable()
+    .subscribe(res => {
+      console.log("observable==>",res);
+    });
+    
+    /**
+     * example of subject Observable
+     */
+    this.eventEmit.subscribe(res=> console.log(res))
+
   }
 }
