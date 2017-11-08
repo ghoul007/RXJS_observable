@@ -43,4 +43,19 @@ export class UserService {
       this.http.get("https://jsonplaceholder.typicode.com/users").toPromise()
     ).map(res => res.json());
   }
+
+
+  getUsersPromiseAll() {
+    this.delayedPromise = new Promise((resolve, reject) =>
+      setTimeout(() => resolve("value1"), 10000)
+    );
+    this.delayedPromise2 = new Promise((resolve, reject) =>
+      setTimeout(() => resolve("value2"), 500)
+    );
+
+    return Promise.all([this.delayedPromise, this.delayedPromise2]);
+  }
+
+
+
 }

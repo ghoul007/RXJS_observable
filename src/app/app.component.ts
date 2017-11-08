@@ -21,6 +21,13 @@ export class AppComponent implements OnInit {
       .catch(error => {
         console.log("error", error);
       });
+
+    this._serviceUser
+      .getUsersPromiseAll()
+      .then(val => console.log('****all****',val))
+      .catch(error => {
+        console.log("error", error);
+      });
     this._serviceUser
     .getFromPromise()
     .subscribe(res => {
