@@ -1,0 +1,5 @@
+<button (click)="add()">Moar</button>
+<button (click)="remove()">Less</button>
+<button (click)="shuffle()">Shuffle</button>
+<app-child *ngFor="let i of list" val="{{i}}"></app-child>
+<p>Value of last: {{lastVal}}</p>
