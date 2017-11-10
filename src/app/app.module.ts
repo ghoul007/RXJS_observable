@@ -15,6 +15,8 @@ import { ParentComponent } from './queryselect/parent/parent.component';
 
 import { ChildComponent } from './queryselect/parent/child/child.component';
 import { SearchComponent } from './search/search/search.component';
+import { LOGO_URL } from './global';
+import { TestGlobalComponent } from './test-global/test-global.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { SearchComponent } from './search/search/search.component';
     ChildComponent,
     ParentComponent,
     SearchComponent,
+    TestGlobalComponent,
 
   ],
   imports: [
@@ -32,7 +35,9 @@ import { SearchComponent } from './search/search/search.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService , AuthService, PublisherService, ViewchildService, ApiService],
+  providers: [UserService , AuthService, PublisherService, ViewchildService, ApiService,
+    {provide: LOGO_URL,  useValue: 'https://angular.io/resources/images/logos/standard/logo-nav.png'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
