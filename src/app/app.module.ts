@@ -1,3 +1,5 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from './api.service';
 import { ViewchildService } from './queryselect/viewchild.service';
 import { PublisherService } from './publisher.service';
 import { AuthService } from './auth.service';
@@ -12,6 +14,7 @@ import { PublisherComponent } from './publisher/publisher.component';
 import { ParentComponent } from './queryselect/parent/parent.component';
 
 import { ChildComponent } from './queryselect/parent/child/child.component';
+import { SearchComponent } from './search/search/search.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,16 @@ import { ChildComponent } from './queryselect/parent/child/child.component';
     PublisherComponent,
     ChildComponent,
     ParentComponent,
+    SearchComponent,
 
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [UserService , AuthService, PublisherService, ViewchildService],
+  providers: [UserService , AuthService, PublisherService, ViewchildService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
